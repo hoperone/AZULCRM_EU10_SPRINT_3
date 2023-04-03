@@ -8,11 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-public class MessageTabPage {
+public class MessageTabPage extends BasePage {
 
-    public MessageTabPage(){
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
 
     @FindBy(xpath = "//span[@id='feed-add-post-form-tab-message']")
     public WebElement messageTab;
