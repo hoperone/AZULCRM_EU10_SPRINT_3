@@ -1,4 +1,4 @@
-@wip
+@wipSalim
 Feature: Assigning tasks under Quick Navigate Menu
   Background:
     Given user is in home page but in Tasks Quick Navigate Menu

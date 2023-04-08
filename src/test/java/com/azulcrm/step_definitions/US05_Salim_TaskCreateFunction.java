@@ -4,9 +4,11 @@ import com.azulcrm.pages.LoginPage;
 import com.azulcrm.pages.SalimTaskPage;
 import com.azulcrm.utilities.BrowserUtils;
 import com.azulcrm.utilities.ConfigurationReader;
+import com.azulcrm.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class US05_Salim_TaskCreateFunction {
 
@@ -15,9 +17,12 @@ public class US05_Salim_TaskCreateFunction {
 
     @Given("user is in home page but in Tasks Quick Navigate Menu")
     public void user_is_in_home_page_but_in_tasks_quick_navigate_menu() {
+        Driver.getDriver().get("https://qa.azulcrm.com/");
+        BrowserUtils.waitFor(2);
         loginPage.login(ConfigurationReader.getProperty("hrUserName"),ConfigurationReader.getProperty("hrPassword"));
         BrowserUtils.waitFor(2);
         taskPage.taskTab.click();
+        BrowserUtils.waitFor(2);
     }
 
     @When("user check High priority box.")
@@ -44,8 +49,10 @@ public class US05_Salim_TaskCreateFunction {
     public void user_can_able_to_create_task() {
        // user_click_on_send_button
         String a = taskPage.ongoingAfter.getText();
-      //  if (a>b)
-    }
+        if (a == "1"){
+            Assert.assertTrue(taskPage.ongoingAfter.isDisplayed());
+        }
+     }
 
     @When("user click on {string} button")
     public void user_click_on_button(String string) {
