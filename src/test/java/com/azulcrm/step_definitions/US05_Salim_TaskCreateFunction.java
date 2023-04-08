@@ -1,30 +1,50 @@
 package com.azulcrm.step_definitions;
 
+import com.azulcrm.pages.LoginPage;
+import com.azulcrm.pages.SalimTaskPage;
+import com.azulcrm.utilities.BrowserUtils;
+import com.azulcrm.utilities.ConfigurationReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class US05_Salim_TaskCreateFunction {
 
+    LoginPage loginPage = new LoginPage();
+    SalimTaskPage taskPage = new SalimTaskPage();
+
+    @Given("user is in home page but in Tasks Quick Navigate Menu")
+    public void user_is_in_home_page_but_in_tasks_quick_navigate_menu() {
+        loginPage.login(ConfigurationReader.getProperty("hrUserName"),ConfigurationReader.getProperty("hrPassword"));
+        BrowserUtils.waitFor(2);
+        taskPage.taskTab.click();
+    }
 
     @When("user check High priority box.")
     public void user_check_high_priority_box() {
-
+        taskPage.highPriorityCheckBox.click();
     }
 
     @When("fulfill mandatory fields for defining what the task is.")
     public void fulfill_mandatory_fields_for_defining_what_the_task_is() {
-
+        //Mandatory fields: Task name, Responsible person
+        taskPage.responsiblePersonBox.click();
+        taskPage.responsiblePersonBox.sendKeys("hr52@cybertekschool.com");
+        taskPage.responsiblePersonBox.sendKeys("hr53@cybertekschool.com");
+        taskPage.thingsToDo.sendKeys("Salim Task Tests");
     }
 
     @When("user click on send button.")
     public void user_click_on_send_button() {
-
+       // String b = taskPage.ongoingPre.getText();
+        taskPage.sendBtn.click();
     }
 
     @Then("user can able to create task")
     public void user_can_able_to_create_task() {
-
+       // user_click_on_send_button
+        String a = taskPage.ongoingAfter.getText();
+      //  if (a>b)
     }
 
     @When("user click on {string} button")
@@ -61,10 +81,6 @@ public class US05_Salim_TaskCreateFunction {
     }
 
 
-    @Given("user is in home page but in Tasks Quick Navigate Menu")
-    public void user_is_in_home_page_but_in_tasks_quick_navigate_menu() {
-
-    }
 
     @When("user click on {string} box")
     public void user_click_on_box(String string) {
