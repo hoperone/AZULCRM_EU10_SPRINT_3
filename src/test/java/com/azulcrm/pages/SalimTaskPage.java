@@ -28,5 +28,3 @@ public class SalimTaskPage {
         public WebElement ongoingAfter;
     }
 
-
-}
