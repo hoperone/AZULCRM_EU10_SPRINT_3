@@ -5,25 +5,34 @@ import com.azulcrm.pages.SalimTaskPage;
 import com.azulcrm.utilities.BrowserUtils;
 import com.azulcrm.utilities.ConfigurationReader;
 import com.azulcrm.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class US05_Salim_TaskCreateFunction {
 
     LoginPage loginPage = new LoginPage();
     SalimTaskPage taskPage = new SalimTaskPage();
 
-    @Given("user is in home page but in Tasks Quick Navigate Menu")
-    public void user_is_in_home_page_but_in_tasks_quick_navigate_menu() {
+    @Given("user login successfully")
+    public void user_login_successfully() {
         Driver.getDriver().get("https://qa.azulcrm.com/");
-        BrowserUtils.waitFor(2);
         loginPage.login(ConfigurationReader.getProperty("hrUserName"),ConfigurationReader.getProperty("hrPassword"));
-        BrowserUtils.waitFor(2);
+    }
+
+    @And("click to Task Tab")
+    public void click_to_Task_Tab(){
         taskPage.taskTab.click();
         BrowserUtils.waitFor(2);
     }
+
 
     @When("user check High priority box.")
     public void user_check_high_priority_box() {
@@ -32,27 +41,38 @@ public class US05_Salim_TaskCreateFunction {
 
     @When("fulfill mandatory fields for defining what the task is.")
     public void fulfill_mandatory_fields_for_defining_what_the_task_is() {
+        taskPage.thingsToDo.sendKeys("TaskDemoRun");
         //Mandatory fields: Task name, Responsible person
-        taskPage.responsiblePersonBox.click();
-        taskPage.responsiblePersonBox.sendKeys("hr52@cybertekschool.com");
-        taskPage.responsiblePersonBox.sendKeys("hr53@cybertekschool.com");
-        taskPage.thingsToDo.sendKeys("Salim Task Tests");
+       // taskPage.responsiblePersonBox.click();
+     //   taskPage.responsiblePersonBox.sendKeys("hr52@cybertekschool.com");
+     //   taskPage.responsiblePersonBox.sendKeys("hr53@cybertekschool.com");
+      //  taskPage.thingsToDo.sendKeys(ConfigurationReader.getProperty("defaultTaskName"));
     }
 
     @When("user click on send button.")
     public void user_click_on_send_button() {
-       // String b = taskPage.ongoingPre.getText();
-        taskPage.sendBtn.click();
+         taskPage.sendBtn.click();
+         BrowserUtils.waitFor(10);
     }
 
     @Then("user can able to create task")
     public void user_can_able_to_create_task() {
-       // user_click_on_send_button
-        String a = taskPage.ongoingAfter.getText();
-        if (a == "1"){
-            Assert.assertTrue(taskPage.ongoingAfter.isDisplayed());
-        }
-     }
+
+        //WebDriverWait wait = new WebDriverWait(Driver.getDriver(),1);
+        //  wait.until(ExpectedConditions.elementToBeClickable(taskPage.Task_created_PopUp));
+      //  Assert.assertTrue(taskPage.Task_created_PopUp.isDisplayed());
+
+        taskPage.OngoingTasks.click();
+        Assert.assertTrue( taskPage.TaskDemoRunInList.isDisplayed());
+       //Revert The Task
+        taskPage.OngoingTasks.click();
+        taskPage.TaskCenterCheckAll.click();
+        taskPage.SelectActionDropDown.click();
+        taskPage.DeleteInDropDown.click();
+        taskPage.ApplyButtonInDropDown.click();
+        taskPage.task_confirm_popup.
+
+    }
 
     @When("user click on {string} button")
     public void user_click_on_button(String string) {

@@ -1,7 +1,8 @@
 @wipSalim
 Feature: Assigning tasks under Quick Navigate Menu
   Background:
-    Given user is in home page but in Tasks Quick Navigate Menu
+    Given user login successfully
+    And click to Task Tab
 
   @AC1
   Scenario: Verify that, HR User should be able to create a "High priority" tasks with the mandatory fields.
