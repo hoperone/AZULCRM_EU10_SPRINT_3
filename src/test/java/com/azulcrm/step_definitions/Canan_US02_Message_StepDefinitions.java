@@ -3,7 +3,6 @@ import com.azulcrm.pages.LoginPage;
 import com.azulcrm.pages.MessageTabPage;
 import com.azulcrm.utilities.BrowserUtils;
 import com.azulcrm.utilities.ConfigurationReader;
-import com.azulcrm.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,7 +12,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-public class Jiranic3_US02_Message_StepDefinitions {
+public class Canan_US02_Message_StepDefinitions {
     MessageTabPage messageTabPage = new MessageTabPage();
     LoginPage loginPage = new LoginPage();
 
@@ -92,9 +91,6 @@ public class Jiranic3_US02_Message_StepDefinitions {
     public void userClicksSendButton() {
         messageTabPage.sendButton.click();
     }
-
-
-
 
     @And("user clicks Insert in text button")
     public void userClicksInsertInTextButton() {

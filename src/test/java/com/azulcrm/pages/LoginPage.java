@@ -16,6 +16,7 @@ public class LoginPage extends BasePage{
     public WebElement loginButton;
 
     public void login(String username, String password){
+        Driver.getDriver().get("https://qa.azulcrm.com/");
         usernameInputBox.sendKeys(username);
         passwordInputBox.sendKeys(password);
         loginButton.click();
