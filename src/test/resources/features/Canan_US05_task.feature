@@ -5,7 +5,7 @@ Feature: As a user, I should be able to assign tasks under Quick Navigate Menu
     Given user logs in successfully
     And user clicks Task menu
 
-  @AZUL10-558
+  @AZUL10-558 @smoke
   Scenario: Verify hr user can assign high priority task-1
     When user enters task name
     And user clicks high priority checkbox
