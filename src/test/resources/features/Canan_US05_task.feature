@@ -5,7 +5,7 @@ Feature: As a user, I should be able to assign tasks under Quick Navigate Menu
     Given user logs in successfully
     And user clicks Task menu
 
-  @AZUL10-558
+  @AZUL10-558 @smoke
   Scenario: Verify hr user can assign high priority task-1
     When user enters task name
     And user clicks high priority checkbox
@@ -76,14 +76,17 @@ Feature: As a user, I should be able to assign tasks under Quick Navigate Menu
       | June  | 2025 | 2   | 1    | 00     | PM   | 06/02/2025 01:00:00 pm |
 
   @AZUL10-556
-  Scenario: Verify user can use time planning function
+  Scenario Outline: Verify user can use time planning function
     When user clicks time planning option
     And user selects start time
     |May,2024,31,10,30,AM |
-    And user enters duration
-    |10 days|
-    Then finish box shows finish time correctly
-    |06/10/2024 10:30:00 am|
+    And user enters "<duration>"
+    Then finish box shows finish "<time>" correctly
+    Examples:
+      | duration   | time                   |
+      | 10 days    | 06/10/2024 10:30:00 am |
+      | 10 hours   | 05/31/2024 08:30:00 pm |
+      | 10 minutes | 05/31/2024 10:40:00 am |
 
 
 

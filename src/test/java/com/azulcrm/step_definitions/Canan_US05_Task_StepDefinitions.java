@@ -136,13 +136,26 @@ public class Canan_US05_Task_StepDefinitions {
 
         taskPage.calenderSelectButton.click();
     }
-    @When("user enters duration")
-    public void user_enters_duration(String duration) {
+    @And("user enters {string}")
+    public void userEnters(String duration) {
         String[] durationArray = duration.split(" ");
         taskPage.durationInputBox.sendKeys(durationArray[0]);
-        taskPage.durationDaysOption.click();
+        switch (durationArray[1]){
+            case "days":
+                taskPage.durationDaysOption.click();
+                break;
+            case "hours":
+                taskPage.durationHoursOption.click();
+                break;
+            case "minutes":
+                taskPage.durationMinutesOption.click();
+                break;
+
+
+        }
+
     }
-    @Then("finish box shows finish time correctly")
+    @Then("finish box shows finish {string} correctly")
     public void finish_box_shows_finish_time_correctly(String expectedFinishTime) {
         String actualFinishTime = taskPage.finishDateInputBox.getAttribute("value");
         Assert.assertEquals(expectedFinishTime, actualFinishTime);
@@ -164,4 +177,7 @@ public class Canan_US05_Task_StepDefinitions {
     public void userSeesTaskHasHighPriorityIcon() {
         Assert.assertTrue(taskPage.highPriorityIconUnderMyTasksTable.isDisplayed());
     }
+
+
+
 }
