@@ -168,6 +168,13 @@ public class Canan_Task_Page {
     @FindBy(xpath = "//span[@data-unit='days']")
     public WebElement durationDaysOption;
 
+    @FindBy(xpath = "//span[@data-unit='hours']")
+    public WebElement durationHoursOption;
+
+    @FindBy(xpath = "//span[@data-unit='minutes']")
+    public WebElement durationMinutesOption;
+
+
     @FindBy(xpath = "//span[@data-bx-id='dateplanmanager-end-date-plan']//input[@data-bx-id='datepicker-value']")
     public WebElement finishDateInputBox;  //verify its value attribute is expected
 
