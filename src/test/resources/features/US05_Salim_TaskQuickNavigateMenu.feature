@@ -36,7 +36,7 @@ Feature: Assigning tasks under Quick Navigate Menu
     And choose something and click Select button
     Then user should be able to be add a new deadline
 
-  @AC6
+  @AC6 @smoke
   Scenario: Verify that, time planning function should be able to be used in the setting of deadline.
     When user click on "time planning" link
     And user click on "Start task on" box
