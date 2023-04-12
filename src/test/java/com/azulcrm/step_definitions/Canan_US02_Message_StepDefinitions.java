@@ -3,7 +3,6 @@ import com.azulcrm.pages.LoginPage;
 import com.azulcrm.pages.MessageTabPage;
 import com.azulcrm.utilities.BrowserUtils;
 import com.azulcrm.utilities.ConfigurationReader;
-import com.azulcrm.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,7 +12,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-public class Jiranic3_US02_Message_StepDefinitions {
+public class Canan_US02_Message_StepDefinitions {
     MessageTabPage messageTabPage = new MessageTabPage();
     LoginPage loginPage = new LoginPage();
 
@@ -61,6 +60,9 @@ public class Jiranic3_US02_Message_StepDefinitions {
             case "jpeg":
                 messageTabPage.uploadFilesAndImagesButton.sendKeys(ConfigurationReader.getProperty("path4"));
                 break;
+            case "gif":
+                messageTabPage.uploadFilesAndImagesButton.sendKeys(ConfigurationReader.getProperty("path5"));
+                break;
         }
     }
 
@@ -83,8 +85,8 @@ public class Jiranic3_US02_Message_StepDefinitions {
 
     }
 
-    @When("user uploads a file")
-    public void user_uploads_a_file() {
+    @When("user uploads a picture")
+    public void user_uploads_a_picture() {
         messageTabPage.uploadFilesAndImagesButton.sendKeys(ConfigurationReader.getProperty("path1"));
     }
 
@@ -92,9 +94,6 @@ public class Jiranic3_US02_Message_StepDefinitions {
     public void userClicksSendButton() {
         messageTabPage.sendButton.click();
     }
-
-
-
 
     @And("user clicks Insert in text button")
     public void userClicksInsertInTextButton() {
@@ -168,8 +167,14 @@ public class Jiranic3_US02_Message_StepDefinitions {
         messageTabPage.fileNameEditBox.sendKeys("new file" + Keys.ENTER);
 
     }
-    @Then("file name is changed")
-    public void file_name_is_changed() {
+    @Then("file name has changed")
+    public void file_name_has_changed() {
         Assert.assertTrue(messageTabPage.fileNameText.getText().contains("new file"));
+    }
+
+    @When("user uploads a file")
+    public void userUploadsAFile() {
+        messageTabPage.uploadFilesAndImagesButton.sendKeys(ConfigurationReader.getProperty("path3"));
+
     }
 }
