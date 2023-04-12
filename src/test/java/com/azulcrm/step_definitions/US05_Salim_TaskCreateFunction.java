@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -70,30 +71,43 @@ public class US05_Salim_TaskCreateFunction {
         taskPage.SelectActionDropDown.click();
         taskPage.DeleteInDropDown.click();
         taskPage.ApplyButtonInDropDown.click();
-        taskPage.task_confirm_popup.
+        taskPage.task_confirm_Continue.click();
 
     }
 
     @When("user click on {string} button")
     public void user_click_on_button(String string) {
-
+        taskPage.AddMoreBtn.click();
     }
 
     @Then("user can able to assign more than one user {string}")
     public void user_can_able_to_assign_more_than_one_user(String string) {
+        taskPage.AddMoreTextBox.sendKeys(ConfigurationReader.getProperty("gelaTestUser")+ Keys.ENTER);
+        taskPage.AddMoreTextBox.sendKeys(ConfigurationReader.getProperty("cananTestUser")+ Keys.ENTER);
+        Assert.assertTrue(taskPage.AddMoreBox.getText().contains("hr52"));
 
     }
 
 
-    @When("assert prior create new task")
-    public void assert_prior_create_new_task() {
+    @When("task is created")
+    public void task_is_created() {
+        taskPage.taskTab.click();
+        taskPage.thingsToDo.sendKeys("TaskDemoRun");
+        taskPage.sendBtn.click();
 
     }
 
 
-    @Then("new task should be counted on the homepage under {string} table")
-    public void new_task_should_be_counted_on_the_homepage_under_table(String string) {
-
+    @Then("new task should be counted on the homepage under MY TASKS table")
+    public void new_task_should_be_counted_on_the_homepage_under_MY_TASKS_table() {
+         Assert.assertTrue(taskPage.OngoingTasksCount.isDisplayed());
+        //Revert The Task
+        taskPage.OngoingTasks.click();
+        taskPage.TaskCenterCheckAll.click();
+        taskPage.SelectActionDropDown.click();
+        taskPage.DeleteInDropDown.click();
+        taskPage.ApplyButtonInDropDown.click();
+        taskPage.task_confirm_Continue.click();
     }
 
 

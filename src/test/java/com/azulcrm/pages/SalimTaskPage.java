@@ -27,6 +27,9 @@ public class SalimTaskPage extends BasePage {
         @FindBy(xpath = "//span[.='Ongoing']")
         public WebElement OngoingTasks;
 
+        @FindBy(xpath = "//span[@class='task-item-index']")
+        public WebElement OngoingTasksCount;
+
         @FindBy(xpath = "//a[.='TaskDemoRun']")
         public WebElement TaskDemoRunInList;
 
@@ -47,6 +50,27 @@ public class SalimTaskPage extends BasePage {
 
         @FindBy(xpath="//span[@class='popup-window-button popup-window-button-accept']")
         public WebElement task_confirm_Continue;
+
+        @FindBy (xpath = "//a[@class='js-id-tdp-mem-sel-is-open-form task-form-field-when-filled task-form-field-link add']")
+        public WebElement AddMoreBtn;
+
+        @FindBy(xpath = "//input[@class='js-id-tdp-mem-sel-is-search js-id-network-selector-search task-form-field-search task-form-field-input']")
+        public WebElement AddMoreTextBox;
+
+        @FindBy (id="bx-component-scope-lifefeed_task_form-responsible")
+        public WebElement AddMoreBox;
+
+        @FindBy (xpath = "//span[@class='tasks-task-mpf-link']")
+        public WebElement ChecklistLink;
+
+        @FindBy (xpath = "//input[@class='js-id-checklist-is-form-title task-checklist-field-add']")
+        public WebElement ChecklistThingsToDo;
+
+        @FindBy (xpath = "//span[@class='js-id-checklist-is-form-submit block-edit tasks-btn-apply task-field-title-ok']")
+        public WebElement ChecklistAcceptBtn;
+
+        @FindBy (xpath = "//div[@class='task-checklist-field-inner']")
+        public WebElement ChecklistFieldCreatedAndDisplayed;
 
 
 

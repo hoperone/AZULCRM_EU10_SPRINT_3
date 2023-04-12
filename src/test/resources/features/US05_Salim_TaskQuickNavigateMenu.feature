@@ -21,11 +21,9 @@ Feature: Assigning tasks under Quick Navigate Menu
       | hr52@cybertekschool.com hr4@cybertekschool.com hr5@cybertekschool.com |
 
   @AC3
-  Scenario:  Verify that, when task is created, can be seen on the count on the homepage under "MY TASKS" table.
-    When assert prior create new task
-    And fulfill mandatory fields for defining what the task is.
-    And user click on send button.
-    Then new task should be counted on the homepage under "MY TASKS" table
+  Scenario:  Verify that, when task is created, can be seen on the count on the homepage under MY TASKS table.
+    When task is created
+    Then new task should be counted on the homepage under MY TASKS table
 
   @AC4
   Scenario: Verify that, checklist should be able to be added while creating a task.
