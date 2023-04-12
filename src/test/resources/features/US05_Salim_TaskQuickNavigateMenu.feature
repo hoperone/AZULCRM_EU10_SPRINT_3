@@ -38,9 +38,9 @@ Feature: Assigning tasks under Quick Navigate Menu
 
   @AC6 @smoke
   Scenario: Verify that, time planning function should be able to be used in the setting of deadline.
-    When user click on "time planning" link
-    And user click on "Start task on" box
-    And choose something and click Select button
+    When user click on time planning link
+    When user click on "Start task on" box
+    When choose something and click Select button
     And user click on "Duration" box
     And write sometime and Enter
     Then user should be able to see Finish date
