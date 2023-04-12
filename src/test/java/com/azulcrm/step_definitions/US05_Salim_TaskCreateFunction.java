@@ -127,7 +127,7 @@ public class US05_Salim_TaskCreateFunction {
 
 
     @When("user click on {string} box")
-    public void user_click_on_box(String string) {
+    public void user_click_on_box(String deadline) {
         taskPage.DeadlineInputBox.click();
 
     }

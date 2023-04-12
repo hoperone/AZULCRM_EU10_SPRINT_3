@@ -1,4 +1,4 @@
-@wipSalim
+@smoke
 Feature: Assigning tasks under Quick Navigate Menu
   Background:
     Given user login successfully
