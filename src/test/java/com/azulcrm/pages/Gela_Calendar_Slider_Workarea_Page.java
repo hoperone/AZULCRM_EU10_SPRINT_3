@@ -45,7 +45,6 @@ public class Gela_Calendar_Slider_Workarea_Page extends BasePage {
     public WebElement timeZoneTo;
 
 
-
     /**
      * METHODS
      */
@@ -69,7 +68,7 @@ public class Gela_Calendar_Slider_Workarea_Page extends BasePage {
         }
     }
 
-    public WebElement locateAttendees(String attendees){
+    public WebElement locateAttendees(String attendees) {
         return Driver.getDriver().findElement(By.xpath("//span[contains(text(),'" + attendees + "')]"));
     }
 

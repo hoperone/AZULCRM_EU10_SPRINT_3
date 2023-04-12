@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 public class Gela_Sidebar_Page extends BasePage {
 
 
-    /**METHODS*/
+    /**
+     * METHODS
+     */
     //clicks on last created event in upcoming events
     public void clickOnEvent(String eventName) {
         //go to last created event

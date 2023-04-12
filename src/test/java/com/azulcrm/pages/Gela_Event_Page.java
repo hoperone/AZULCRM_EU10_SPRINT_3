@@ -80,7 +80,6 @@ public class Gela_Event_Page extends BasePage {
     public WebElement eventLocationText;
 
 
-
     /**
      * METHODS
      */

@@ -1,4 +1,5 @@
 package com.azulcrm.step_definitions;
+
 import com.azulcrm.pages.*;
 import com.azulcrm.utilities.BrowserUtils;
 import com.azulcrm.utilities.ConfigurationReader;
@@ -332,7 +333,7 @@ public class Gela_US_04_Create_Events_Step_Definitions {
         // Check that the expected reminder time is contained in the actual reminder text
         Assert.assertTrue(gelaCalendarSliderSidebar.reminder.getText().contains(time));
         // Check that the expected reminder type is contained in the actual reminder type
-        Assert.assertTrue("There is a typo: minite(s) instead of minute(s)",actualEventReminderTypeAfterRemovingParenthesis.contains(type));
+        Assert.assertTrue("There is a typo: minite(s) instead of minute(s)", actualEventReminderTypeAfterRemovingParenthesis.contains(type));
 
         System.out.println("actualEventReminderType = " + gelaCalendarSliderSidebar.reminder.getText());
 
@@ -403,7 +404,6 @@ public class Gela_US_04_Create_Events_Step_Definitions {
     /**
      * Test Case 5.1: Verify that the user can select individual contacts to invite to the event.
      */
-
 
     @When("user selects individual contacts")
     public void user_selects_individual_contacts() {
