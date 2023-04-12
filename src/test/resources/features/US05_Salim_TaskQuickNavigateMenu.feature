@@ -1,17 +1,16 @@
-@smoke
 Feature: Assigning tasks under Quick Navigate Menu
   Background:
     Given user login successfully
     And click to Task Tab
 
-  @AC1
+  @AC1 @smoke
   Scenario: Verify that, HR User should be able to create a "High priority" tasks with the mandatory fields.
     When user check High priority box.
     And fulfill mandatory fields for defining what the task is.
     And user click on send button.
     Then user can able to create task
 
-  @AC2
+  @AC2 @smoke
   Scenario Outline: Verify that, HR User should be able to assign a task to more than one user (Test with adding 3 users max.)
     When user click on "add more" button
     Then user can able to assign more than one user "<user>"
