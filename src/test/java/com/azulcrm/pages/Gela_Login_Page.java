@@ -3,7 +3,7 @@ package com.azulcrm.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GelaLoginPage extends BasePage {
+public class Gela_Login_Page extends BasePage {
 
     //--Locators--
     @FindBy(name = "USER_LOGIN")
