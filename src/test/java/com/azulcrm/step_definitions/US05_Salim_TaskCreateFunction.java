@@ -113,28 +113,37 @@ public class US05_Salim_TaskCreateFunction {
 
     @When("write something and accept button")
     public void write_something_and_accept_button() {
-
+        taskPage.ChecklistLink.click();
+        taskPage.ChecklistThingsToDo.sendKeys(ConfigurationReader.getProperty("defaultTaskName"));
+        taskPage.ChecklistAcceptBtn.click();
     }
 
     @Then("user should be able to be add a new checklist")
     public void user_should_be_able_to_be_add_a_new_checklist() {
-
+        taskPage.ChecklistFieldCreatedAndDisplayed.isDisplayed();
+        taskPage.ChecklistFieldClearOut.click();
     }
 
 
 
     @When("user click on {string} box")
     public void user_click_on_box(String string) {
+        taskPage.DeadlineInputBox.click();
 
     }
 
     @When("choose something and click Select button")
     public void choose_something_and_click_select_button() {
-
+        taskPage.PickDate.click();
+        taskPage.DeadlineSelect.click();
     }
 
     @Then("user should be able to be add a new deadline")
     public void user_should_be_able_to_be_add_a_new_deadline() {
+        String expectedDate = "04/15/2023 07:00 pm";
+        String actual = taskPage.DeadlineDisplay.getAttribute("value");
+
+        Assert.assertEquals(expectedDate,actual);
 
     }
 
