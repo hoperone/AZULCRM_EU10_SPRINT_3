@@ -1,16 +1,16 @@
-@wip
 Feature: Assigning tasks under Quick Navigate Menu
   Background:
-    Given user is in home page but in Tasks Quick Navigate Menu
+    Given user login successfully
+    And click to Task Tab
 
-  @AC1
+  @AC1 @smoke
   Scenario: Verify that, HR User should be able to create a "High priority" tasks with the mandatory fields.
     When user check High priority box.
     And fulfill mandatory fields for defining what the task is.
     And user click on send button.
     Then user can able to create task
 
-  @AC2
+  @AC2 @smoke
   Scenario Outline: Verify that, HR User should be able to assign a task to more than one user (Test with adding 3 users max.)
     When user click on "add more" button
     Then user can able to assign more than one user "<user>"
@@ -20,11 +20,9 @@ Feature: Assigning tasks under Quick Navigate Menu
       | hr52@cybertekschool.com hr4@cybertekschool.com hr5@cybertekschool.com |
 
   @AC3
-  Scenario:  Verify that, when task is created, can be seen on the count on the homepage under "MY TASKS" table.
-    When assert prior create new task
-    And fulfill mandatory fields for defining what the task is.
-    And user click on send button.
-    Then new task should be counted on the homepage under "MY TASKS" table
+  Scenario:  Verify that, when task is created, can be seen on the count on the homepage under MY TASKS table.
+    When task is created
+    Then new task should be counted on the homepage under MY TASKS table
 
   @AC4
   Scenario: Verify that, checklist should be able to be added while creating a task.
@@ -38,7 +36,7 @@ Feature: Assigning tasks under Quick Navigate Menu
     And choose something and click Select button
     Then user should be able to be add a new deadline
 
-  @AC6
+  @AC6 @smoke
   Scenario: Verify that, time planning function should be able to be used in the setting of deadline.
     When user click on "time planning" link
     And user click on "Start task on" box
