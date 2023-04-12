@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class BasePage {
 
-    BasePage(){
+    BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -16,22 +16,16 @@ public abstract class BasePage {
     @FindBy(xpath = "//span[normalize-space()='Activity Stream']")
     public WebElement activityStreamModule;
 
-    @FindBy(xpath = "//span[@id='feed-add-post-form-tab-calendar']//span[contains(text(),'Event')]")
-    public WebElement eventTab;
-
-
     //--Methods--
 
     //Returns page title
-    public String getPageTitle(){
+    public String getPageTitle() {
         return Driver.getDriver().getTitle();
     }
 
     //Opens login Page
-    public void goLoginPage(){
+    public void goLoginPage() {
         Driver.getDriver().get(ConfigurationReader.getProperty("qa.web.url"));
     }
-
-
 
 }

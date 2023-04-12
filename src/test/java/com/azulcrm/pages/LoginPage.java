@@ -4,7 +4,8 @@ import com.azulcrm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-public class LoginPage extends BasePage{
+
+public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//input[@name='USER_LOGIN']")
     public WebElement usernameInputBox;
@@ -15,7 +16,7 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//input[@class='login-btn']")
     public WebElement loginButton;
 
-    public void login(String username, String password){
+    public void login(String username, String password) {
         Driver.getDriver().get("https://qa.azulcrm.com/");
         usernameInputBox.sendKeys(username);
         passwordInputBox.sendKeys(password);
