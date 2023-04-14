@@ -19,6 +19,7 @@ Feature: US03 As a user, I should be able to add link, insert video, add mention
 
 
 
+
     #TC2
     @AZUL10-584
   Scenario: Attaching a link to specified text
