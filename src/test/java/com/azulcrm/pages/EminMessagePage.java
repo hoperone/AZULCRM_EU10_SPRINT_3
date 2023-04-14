@@ -14,10 +14,8 @@ public class EminMessagePage extends BasePage{
     @FindBy(xpath = "//body[@contenteditable='true']")
     public WebElement messageInbox;
 
-
     @FindBy(xpath = "//span[@id='feed-add-post-form-tab-message']")
     public WebElement messageTab;
-
 
     @FindBy(xpath = "//*[@id=\"bx-b-link-blogPostForm\"]/span/i")
     public WebElement linkButton;
@@ -40,15 +38,11 @@ public class EminMessagePage extends BasePage{
     @FindBy(xpath = "//a[.='Add more']")
     public WebElement addMoreButton;
 
-
     @FindBy(xpath = "//*[@id=\"bx-b-video-blogPostForm\"]/span/i")
     public WebElement insertVideo;
 
     @FindBy(xpath = "//*[@id=\"video_idPostFormLHE_blogPostForm-source\"]")
     public WebElement videoSourceInbox;
-
-
-
 
     @FindBy(xpath = "//*[@id=\"bx-b-tag-input-blogPostForm\"]")
     public WebElement addTagButton;
@@ -65,11 +59,8 @@ public class EminMessagePage extends BasePage{
     @FindBy(xpath = "//*[@id=\"post-tags-container-blogPostForm\"]/span[1]/span")
     public WebElement addedTag;
 
-
-
     @FindBy(xpath = "/html/body/blockquote")
     public WebElement quoteInbox;
-
 
     @FindBy(xpath = "//*[@id=\"bx-b-quote-blogPostForm\"]/span/i")
     public WebElement quoteButton;
@@ -80,40 +71,30 @@ public class EminMessagePage extends BasePage{
     @FindBy(xpath = "//*[@id=\"bx-b-mention-blogPostForm\"]")
     public WebElement addMention;
 
-
-
     @FindBy(xpath = "//*[contains(@id,\"last_UA\")]/div[3]/div")
     public WebElement removeAllEmployees1;
 
     @FindBy(xpath = "//*[@id=\"feed-add-post-destination-item\"]/span/span[2]")
     public WebElement removeAllEmployees2;
 
-
     @FindBy(xpath = "//*[contains(@id,\"blogpost-tags\")]/a")
     public WebElement tagIsDisplayed;
 
-
-
-                    //*[@id="feed-add-post-destination-container"]
     @FindBy(xpath = "//span[@class='feed-add-post-destination-text']")
     public WebElement addMore;
 
-    //div[@id='feed-add-post-destination-container']
     @FindBy(xpath = "//a[.='Add more']")
     public WebElement toInbox;
 
     @FindBy(xpath = "//a[.='Add persons, groups or department']")
     public WebElement toInbox2;
 
-    //this is a dynamic web element I have to use one of these contains, starts-with, ends-with
-    //a[contains(@id,"destDepartmentTab_destination")]
     @FindBy(xpath = "//a[@class='bx-finder-box-tab bx-lm-tab-department']")
     public WebElement employeesAndDepartments;
 
-
     @FindBy(xpath = "//*[@id=\"bx-lm-box-last-content\"]/table/tr/td/div[3]/div[2]/div[3]/a/div[2]")
     public WebElement developerDepartment;
-                        //*[@id="bx-lm-box-last-content"]/table/tr/td/div[3]/div[2]/div[4]/a/span/div[2]
+
     @FindBy(xpath = "//*[@id=\"bx-lm-box-last-content\"]/table/tr/td/div[3]/div[2]/div[4]/a/span/div[2]")
     public WebElement developerDepartmentCheckBox;
 
@@ -148,6 +129,7 @@ public class EminMessagePage extends BasePage{
     public void switchToParentFrame(){
         Driver.getDriver().switchTo().parentFrame();
     }
+
 
 
 }
