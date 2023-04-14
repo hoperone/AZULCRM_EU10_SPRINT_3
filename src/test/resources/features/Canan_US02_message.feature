@@ -6,7 +6,7 @@ Feature: As a user, I should be able to upload files and pictures as messages
     And user clicks Messages menu
     And user clicks upload file link
 
-  @AZUL10-505 @smoke
+  @AZUL10-505
   Scenario: Verify user can upload multiple files at the same time
     When user uploads three files
     Then user sees three files attached
