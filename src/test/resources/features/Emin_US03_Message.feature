@@ -1,4 +1,4 @@
-@regressionAEDK
+@AZUL10-590
 Feature: US03 As a user, I should be able to add link, insert video, add mention, add quote and add tag in message.
 
   Background:
@@ -7,20 +7,20 @@ Feature: US03 As a user, I should be able to add link, insert video, add mention
     #TC1 This test case manually checked and seen that
                 # the add  check box doesn't exist.
                 # Because of that this AC cannot be automated.
+  @AZUL10-589
 #  Scenario: User should be able to add mentions about only department employees.
 #    When user clicks Message menu
 #    And the user is composes a message
 #    And the user removes all employees
 #    And the user clicks add mention button
-#    And the user clicks addMore button
 #    And the user clicks employees and department button
-#    And the user adds one by one all departments
-#    Then the user verifies all departments are added or not
+#    And the user should only be able to add email addresses of department employees
+#    Then the user should not be able to add email addresses from outside of the company
 
 
 
     #TC2
-    @smoke
+    @AZUL10-584
   Scenario: Attaching a link to specified text
     When user clicks Message menu
     And the user is composes a message
@@ -35,7 +35,7 @@ Feature: US03 As a user, I should be able to add link, insert video, add mention
       #TC3 This test case manually checked and seen that
             # the youtube or vimeo videos cannot be uploaded.
             # Because of that this AC cannot be automated.
-
+    @AZUL10-588
 #    Scenario: User should be able to insert YouTube and Vimeo video
 #      When user clicks Message menu
 #      And the user clicks to insert video button
@@ -44,7 +44,7 @@ Feature: US03 As a user, I should be able to add link, insert video, add mention
 
 
       #TC4
-      @smoke
+      @AZUL10-585 @smoke
       Scenario: User should be able to add quotes
         When user clicks Message menu
         And the user clicks on the quote button
@@ -55,7 +55,7 @@ Feature: US03 As a user, I should be able to add link, insert video, add mention
 
 
         #TC5
-        @Smoke
+        @AZUL10-586 @smoke
         Scenario: User should be able to add tags in message
           When user clicks Message menu
           And the user is composes a message
@@ -66,6 +66,7 @@ Feature: US03 As a user, I should be able to add link, insert video, add mention
           Then the sent tag or tags is displayed
 
         #TC6
+        @AZUL10-587
         Scenario: User should be able to remove tags before sending the message
           When user clicks Message menu
           And the user is composes a message
