@@ -25,11 +25,11 @@ public class US05_Salim_TaskCreateFunction {
     @Given("user login successfully")
     public void user_login_successfully() {
         Driver.getDriver().get("https://qa.azulcrm.com/");
-        loginPage.login(ConfigurationReader.getProperty("hrUserName"),ConfigurationReader.getProperty("hrPassword"));
+        loginPage.login(ConfigurationReader.getProperty("hrUserName"), ConfigurationReader.getProperty("hrPassword"));
     }
 
     @And("click to Task Tab")
-    public void click_to_Task_Tab(){
+    public void click_to_Task_Tab() {
         taskPage.taskTab.click();
         BrowserUtils.waitFor(2);
     }
@@ -44,16 +44,16 @@ public class US05_Salim_TaskCreateFunction {
     public void fulfill_mandatory_fields_for_defining_what_the_task_is() {
         taskPage.thingsToDo.sendKeys("TaskDemoRun");
         //Mandatory fields: Task name, Responsible person
-       // taskPage.responsiblePersonBox.click();
-     //   taskPage.responsiblePersonBox.sendKeys("hr52@cybertekschool.com");
-     //   taskPage.responsiblePersonBox.sendKeys("hr53@cybertekschool.com");
-      //  taskPage.thingsToDo.sendKeys(ConfigurationReader.getProperty("defaultTaskName"));
+        // taskPage.responsiblePersonBox.click();
+        //   taskPage.responsiblePersonBox.sendKeys("hr52@cybertekschool.com");
+        //   taskPage.responsiblePersonBox.sendKeys("hr53@cybertekschool.com");
+        //  taskPage.thingsToDo.sendKeys(ConfigurationReader.getProperty("defaultTaskName"));
     }
 
     @When("user click on send button.")
     public void user_click_on_send_button() {
-         taskPage.sendBtn.click();
-         BrowserUtils.waitFor(10);
+        taskPage.sendBtn.click();
+        BrowserUtils.waitFor(10);
     }
 
     @Then("user can able to create task")
@@ -61,11 +61,11 @@ public class US05_Salim_TaskCreateFunction {
 
         //WebDriverWait wait = new WebDriverWait(Driver.getDriver(),1);
         //  wait.until(ExpectedConditions.elementToBeClickable(taskPage.Task_created_PopUp));
-      //  Assert.assertTrue(taskPage.Task_created_PopUp.isDisplayed());
+        //  Assert.assertTrue(taskPage.Task_created_PopUp.isDisplayed());
 
         taskPage.OngoingTasks.click();
-        Assert.assertTrue( taskPage.TaskDemoRunInList.isDisplayed());
-       //Revert The Task
+        Assert.assertTrue(taskPage.TaskDemoRunInList.isDisplayed());
+        //Revert The Task
         taskPage.OngoingTasks.click();
         taskPage.TaskCenterCheckAll.click();
         taskPage.SelectActionDropDown.click();
@@ -77,14 +77,21 @@ public class US05_Salim_TaskCreateFunction {
 
     @When("user click on {string} button")
     public void user_click_on_button(String string) {
-        taskPage.AddMoreBtn.click();
+        switch (string) {
+            case ("add more"):
+                taskPage.AddMoreBtn.click();
+                break;
+            case ("checklist"):
+                taskPage.ChecklistLink.click();
+                break;
+        }
     }
 
     @Then("user can able to assign more than one user {string}")
     public void user_can_able_to_assign_more_than_one_user(String string) {
-        taskPage.AddMoreTextBox.sendKeys(ConfigurationReader.getProperty("gelaTestUser")+ Keys.ENTER);
-        taskPage.AddMoreTextBox.sendKeys(ConfigurationReader.getProperty("cananTestUser")+ Keys.ENTER);
-        Assert.assertTrue(taskPage.AddMoreBox.getText().contains("hr52"));
+        taskPage.AddMoreTextBox.sendKeys(ConfigurationReader.getProperty("gelaTestUser") + Keys.ENTER);
+        taskPage.AddMoreTextBox.sendKeys(ConfigurationReader.getProperty("cananTestUser") + Keys.ENTER);
+        Assert.assertTrue(taskPage.AddMoreBox.getText().contains(ConfigurationReader.getProperty("cananTestUser")));
 
     }
 
@@ -94,13 +101,14 @@ public class US05_Salim_TaskCreateFunction {
         taskPage.taskTab.click();
         taskPage.thingsToDo.sendKeys("TaskDemoRun");
         taskPage.sendBtn.click();
-
+        BrowserUtils.waitFor(2);
     }
 
 
     @Then("new task should be counted on the homepage under MY TASKS table")
     public void new_task_should_be_counted_on_the_homepage_under_MY_TASKS_table() {
-         Assert.assertTrue(taskPage.OngoingTasksCount.isDisplayed());
+        BrowserUtils.waitFor(2);
+        Assert.assertTrue(taskPage.OngoingTasksCount.isDisplayed());
         //Revert The Task
         taskPage.OngoingTasks.click();
         taskPage.TaskCenterCheckAll.click();
@@ -113,8 +121,9 @@ public class US05_Salim_TaskCreateFunction {
 
     @When("write something and accept button")
     public void write_something_and_accept_button() {
-        taskPage.ChecklistLink.click();
-        taskPage.ChecklistThingsToDo.sendKeys(ConfigurationReader.getProperty("defaultTaskName"));
+         BrowserUtils.waitFor(2);
+        taskPage.ChecklistThingsToDo.sendKeys("SalimTaskName");
+        BrowserUtils.waitFor(2);
         taskPage.ChecklistAcceptBtn.click();
     }
 
@@ -125,40 +134,58 @@ public class US05_Salim_TaskCreateFunction {
     }
 
 
+    @And("user click on {string} box")
+    public void user_click_on_box(String string) {
+        switch (string) {
+            case "deadline":
+                taskPage.DeadlineInputBox.click();
+                break;
+            case "Start task on":
+                taskPage.DateAndTimeSet.click();
+                //taskPage.SelectBtn.click();
+                break;
+            case "Duration":
+                taskPage.DurationBox.click();
+                break;
 
-    @When("user click on {string} box")
-    public void user_click_on_box(String deadline) {
-        taskPage.DeadlineInputBox.click();
+        }
 
     }
 
     @When("choose something and click Select button")
     public void choose_something_and_click_select_button() {
+        BrowserUtils.waitForVisibility(taskPage.PickDate, 10);
         taskPage.PickDate.click();
+        BrowserUtils.waitForVisibility(taskPage.PickDate, 10);
         taskPage.DeadlineSelect.click();
     }
 
     @Then("user should be able to be add a new deadline")
     public void user_should_be_able_to_be_add_a_new_deadline() {
         String expectedDate = "04/15/2023 07:00 pm";
-        String actual = taskPage.DeadlineDisplay.getAttribute("value");
+        String actual = taskPage.DateAndTimeSet.getAttribute("value");
 
-        Assert.assertEquals(expectedDate,actual);
-
-    }
-
-    @When("user click on {string} link")
-    public void user_click_on_link(String string) {
+        Assert.assertEquals(expectedDate, actual);
 
     }
 
-    @When("write sometime and Enter")
+    @When("user click on time planning link")
+    public void user_click_on_time_planning_link() {
+        BrowserUtils.waitForClickablility(taskPage.TimePlanningLink, 10);
+        taskPage.TimePlanningLink.click();
+    }
+
+    @And("write sometime and Enter")
     public void write_sometime_and_enter() {
-
+        taskPage.DurationBox.sendKeys("5"+Keys.ENTER);
     }
 
     @Then("user should be able to see Finish date")
     public void user_should_be_able_to_see_finish_date() {
+        String expectedDate = "04/15/2023 07:00 pm";
+        String actual = taskPage.FinishDate.getAttribute("value");
+        BrowserUtils.waitForVisibility(taskPage.FinishDate,2);
+
 
     }
 

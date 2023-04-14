@@ -81,10 +81,26 @@ public class SalimTaskPage extends BasePage {
     @FindBy(xpath = "//a[@data-date='1681516800000']")
     public WebElement PickDate;
 
-    @FindBy(xpath = "//span[@class='bx-calendar-button-text']")
+    @FindBy(xpath = "//span[.='Select']")
     public WebElement DeadlineSelect;
 
     @FindBy(xpath = "//*[@id=\"bx-component-scope-lifefeed_task_form\"]/div/div[3]/div[2]/div/div[1]/span[1]/span/input[1]")
-    public WebElement DeadlineDisplay;
-}
+    public WebElement DateAndTimeSet;
+
+    @FindBy(xpath = "//*[@id=\"bx-component-scope-lifefeed_task_form\"]/div/div[3]/div[2]/div/div[1]/span[2]/span[1]")
+    public WebElement TimePlanningLink;
+
+    @FindBy(xpath = "//span[@class='bx-calendar-button-text']")
+    public WebElement SelectBtn;
+
+    @FindBy(xpath = " //input[@data-bx-id='dateplanmanager-duration']")
+    public WebElement DurationBox;
+
+    @FindBy(xpath =  "/html/body/table/tbody/tr[2]/td/table/tbody/tr[1]/td[2]/table/tbody/tr/td/div/div[2]/div/div[1]/div/div/div[3]/div/div/form/div[2]/div[6]/div/div/div/div[3]/div[2]/div/div[2]/div[1]/div/div[4]/span/input[1]")
+    public WebElement FinishDate;
+
+
+
+
+  }
 
